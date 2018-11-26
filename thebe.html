@@ -1,0 +1,77 @@
+<html>
+<head>
+  <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+  <title>Thebe Lab examples</title>
+
+  <!-- Configure and load Thebe !-->
+  <script type="text/x-thebe-config">
+    {
+      bootstrap: true,
+        kernelOptions: {
+        name: "python3",
+        serverSettings: {
+         "baseUrl": "http://localhost:8888",
+         "token": "01b1e4bcb4181798142f66749a43dc6e4b0cc3b4557a3830"
+      }
+    },
+        stripPrompts: {
+        inPrompt: 'sage: ',
+        continuationPrompt: '....: ',
+        selector: '.sage-input',
+      }
+    }
+
+
+      
+    
+  </script>
+  <script src="jquery-3-3-1.js"></script>
+  <script type="text/javascript" src="index-test.js"></script>
+  <link rel="stylesheet" href="../css/awesome.css">
+  
+  <!-- or to use a local build: -->
+  <!-- <script type="text/javascript" src="../lib/index.js"></script> -->
+
+</head>
+<body class="desktop-detected">
+
+  <p>JUPYTER:</p>
+  <i class="fa fa-plus-square" aria-hidden="true" onclick="add()"></i>
+  <i class="fa fa-save" aria-hidden="true" onclick="save()"></i>
+  <i class="fa fa-flash" aria-hidden="true" onclick="runold()"></i>
+
+
+  <div class="cells">
+  <pre  data-executable="true" data-language="python" >print("Hello!")</pre>
+    </div>
+     
+ <!--  <p>Press <tt>Shift-Enter</tt> to execute this cell. Launching the
+  computation backend may take a few seconds, and you may need to
+  re-execute it.</p>
+ -->
+ <script >
+  
+  function add(){
+     $(".cells").append('<pre data-executable="true" data-language="python"></pre>');
+     thebelab.bootstrapnewcell();
+  }
+
+  function save(){
+   code="";
+    $( ".thebelab-save-button" ).trigger( "click" );
+    
+  }
+
+  function runold(){
+    console.log(code);
+    $(".cells").append('<pre data-executable="true" data-language="python">'+code+'</pre>');
+     thebelab.bootstrapnewcell();
+     $( ".thebelab-run-button:last" ).trigger( "click" );
+
+
+  }
+
+ </script>
+
+</body>
+</html>
